@@ -19,12 +19,12 @@ AD프로젝트 : 유튜브 가사 댓글 찾기 프로그램
 **2. 사용자 인터페이스 요구사항**  
   - 윈도우 타이틀 바
   - 제목, 가수, 가사
-  - 다음 가사 버튼
+  - 다음 가사 버튼 
   - 이전 가사 버튼
   - 새로고침 버튼
-  - 스크롤 버튼
-  - 글씨 크기 키움 버튼
-  - 글씨 크기 줄임 버튼
+  - 스크롤 창
+  + 글씨 크기 키움 버튼
+  + 글씨 크기 줄임 버튼
  
  <br><br><br>
  ------------------------------------------------
@@ -34,49 +34,48 @@ AD프로젝트 : 유튜브 가사 댓글 찾기 프로그램
 <br>
 
 **youtubeLyrics.py**
-  - SBYoutubeLyrics
-    - UI component
-  - MainWindow
-    - 메인 윈도우
+  - SBYoutubeLyrics  
+    -UI component
+  - MainWindow  
+    -메인 윈도우
       
-**crawl.py**
-  - TitleCrawl
-    - 영상 제목을 추출하여 songInfo.py에 저장
-  - DetailCrawl
-    - 상세 정보를 추출하여 songInfo.py에 저장
-  - CommentCrawl
-    - 댓글을 추출하여 songInfo.py에 저장
-  - 클래스 이름
-    - 역할
+**scrap.py**
+  - TitleScrap  
+    -영상 제목을 추출하여 songInfo.py에 저장
+  - DetailScrap  
+    -상세 정보를 추출하여 songInfo.py에 저장
+  - CommentScrap  
+    -15줄 이상의 상위 댓글 5개를 추출하여 songInfo.py에 저장
+  - Refresh  
+    -새로고침하여 모든 정보를 새로 추출
    
 **search.py**
-  - SearchSong
-    - 영상 제목, 상세 정보에서 찾아낸 노래 제목을 도출
-  - SearchSinger
-    - 영상 제목, 상세 정보에서 찾아낸 아티스트를 도출
-  - SearchLyrics
-    - 상세 정보, 댓글에서 찾아낸 가사를 도출
-  - LyricsSort
-    - 가사들 중 (상위 댓글->하위 댓글->상세 정보) 순으로 정렬
-  - ResetInfo
-    - 노래에 대한 정보를 리셋
+  - SearchSong  
+    -영상 제목, 상세 정보에서 찾아낸 노래 제목을 도출
+  - SearchSinger  
+    -영상 제목, 상세 정보에서 찾아낸 아티스트를 도출
+  - SearchLyrics  
+    -상세 정보, 댓글에서 찾아낸 가사를 도출
+  - LyricsSort  
+    -가사들 중 (상위 댓글->하위 댓글->상세 정보) 순으로 정렬
+  - ResetInfo  
+    -노래에 대한 정보를 리셋
 
 **songInfo.py**
-  - 노래 제목, 가수, 가사 리스트를 저장
+   노래 제목, 가수, 가사 리스트를 저장
     
-**모듈이름**
-  - 클래스 이름
-    - 역할
-   
-**모듈이름**
-  - 클래스 이름
-    - 역할
+
 
 <br>
 
-| 대상 모듈 \ 주체 모듈| 모듈1 | 모듈2 | 모듈3 | 모듈4 |
-|---|:---:|:---:|:---:|:---:|
-| 모듈1 | 내용 | 내용 | 내용 | 내용 |
+| 주체 모듈 | 내용 | 대상 모듈 |
+|:---|:---:|---:|
+| youtubeLyrics | 다음 동영상으로 넘어가거나 '새로고침 버튼' 클릭 시 Refresh 구동 | scrap |
+| youtubeLyrics | 다음 동영상으로 넘어가거나 '새로고침 버튼' 클릭 시 ResetInfo 구동 | search |
+| youtubeLyrics | 제목, 가수, 가사 리스트를 불러옴 | songInfo |
+| scrap | 영상 제목을 추출하여 초기값으로 저장 <br> 상세 정보를 추출하여 초기값으로 저장 <br> 15줄 이상의 상위 댓글 5개를 추출하여 초기값으로 저장 <br> Refresh시 저장 데이터 모두 초기화(seach보다 우선) | songInfo |
+| search | 영상 제목, 상세 정보에서 찾아낸 노래 제목을 도출하여 새로 저장 <br> 영상 제목, 상세 정보에서 찾아낸 아티스트를 도출하여 새로 저장 <br> 가사들 중 (상위 댓글->하위 댓글->상세 정보) 순으로 정렬하여 리스트 타입으로 저장 <br> ResetInfo시 저장 데이터 모두 초기화 | songInfo |
+| songInfo | 제목, 가수, 가사 리스트를 도출 | youtubeLyrics |
 
 <br><br><br>
 --------------------------------------------
