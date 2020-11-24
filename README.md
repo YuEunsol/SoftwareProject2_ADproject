@@ -23,8 +23,8 @@ AD프로젝트 : 유튜브 가사 댓글 찾기 프로그램
   - 이전 가사 버튼
   - 새로고침 버튼
   - 스크롤 창  
-  +글씨 크기 키움 버튼  
-  +글씨 크기 줄임 버튼
+ +글씨 크기 키움 버튼  
+ +글씨 크기 줄임 버튼
  
  <br><br><br>
  ------------------------------------------------
@@ -34,23 +34,33 @@ AD프로젝트 : 유튜브 가사 댓글 찾기 프로그램
 <br>
 
 **youtubeLyrics.py**
-  - SBYoutubeLyrics  
+  - YoutubeLyrics  
     -UI component
   - MainWindow  
     -메인 윈도우
       
 **scrap.py**
-  - TitleScrap  
+<!---  - TitleScrap  
     -영상 제목을 추출하여 songInfo.py에 저장
   - DetailScrap  
     -상세 정보를 추출하여 songInfo.py에 저장
   - CommentScrap  
     -15줄 이상의 상위 댓글 5개를 추출하여 songInfo.py에 저장
   - Refresh  
-    -새로고침하여 모든 정보를 새로 추출
+    -새로고침하여 모든 정보를 새로 추출--->
+  - Scrap  
+    -현재 재생되고 있는 영상의 정보를 추출함  
+     제목, 상세 정보, 15줄 이상의 상위 댓글 5개를 추출  
+     새로고침시 모든값이 리셋되며 다시 추출됨  
    
-**search.py**
-  - SearchSong  
+**search.py**  
+
+  - Search  
+    -영상 정보에서 찾아낸 노래 제목, 가수, 가사를 songInfo.py에 저장  
+     새로고침시 Scrap의 값이 리셋됨에 따라 모든값이 리셋되며 다시 추출됨
+     
+     
+<!---  - SearchSong  
     -영상 제목, 상세 정보에서 찾아낸 노래 제목을 도출
   - SearchSinger  
     -영상 제목, 상세 정보에서 찾아낸 아티스트를 도출
@@ -59,7 +69,7 @@ AD프로젝트 : 유튜브 가사 댓글 찾기 프로그램
   - LyricsSort  
     -가사들 중 (상위 댓글->하위 댓글->상세 정보) 순으로 정렬
   - ResetInfo  
-    -노래에 대한 정보를 리셋
+    -노래에 대한 정보를 리셋 --->
 
 **songInfo.py**  
   - 노래 제목, 가수, 가사 리스트를 저장
@@ -70,7 +80,7 @@ AD프로젝트 : 유튜브 가사 댓글 찾기 프로그램
 
 | 주체 모듈 | 내용 | 대상 모듈 |
 |:---|:---:|---:|
-| **youtubeLyrics** | 다음 동영상으로 넘어가거나 '새로고침 버튼' 클릭 시 Refresh 구동 | **scrap |
+| **youtubeLyrics** | 다음 동영상으로 넘어가거나 '새로고침 버튼' 클릭 시 Refresh 구동 | **scrap** |
 | **youtubeLyrics** | 다음 동영상으로 넘어가거나 '새로고침 버튼' 클릭 시 ResetInfo 구동 | **search** |
 | **youtubeLyrics** | 제목, 가수, 가사 리스트를 불러옴 | **songInfo** |
 | **scrap** | 영상 제목을 추출하여 초기값으로 저장 <br> 상세 정보를 추출하여 초기값으로 저장 <br> 15줄 이상의 상위 댓글 5개를 추출하여 초기값으로 저장 <br> Refresh시 저장 데이터 모두 초기화(seach보다 우선) | **songInfo** |
@@ -84,17 +94,25 @@ AD프로젝트 : 유튜브 가사 댓글 찾기 프로그램
 ## 구현 상세 설계
 <br>
 
-### *클래스 이름*
+### Scrap
 <br>
 
 **1. 자료 구조**
 
-     자료구조1 이름
-      - 자료구조1 설명
+     titleInfo
+      - 영상 제목에 대한 정보(String)  
+      
+     detailInfo
+      - 영상 상세 정보에 대한 정보(String) 
+      
+     commentInfo
+      - 영상 댓글에 대한 정보(List)
+      
+     url
+      - 현재 url 주소(String)
       
       
-     자료구조2 이름
-      - 자료구조2 설명
+     
     
 <br><br><br>
 ------------------------------------------
