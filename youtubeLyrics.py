@@ -29,7 +29,7 @@ class YoutubeLyrics(QWidget):
         self.songTitle.setReadOnly(True)
         self.songTitle.setAlignment(Qt.AlignCenter)
         titleFont = self.songTitle.font()
-        titleFont.setPointSize(18)
+        titleFont.setPointSize(16)
         titleFont.setBold(True)
         self.songTitle.setFont(titleFont)
 
@@ -38,7 +38,7 @@ class YoutubeLyrics(QWidget):
         self.artist.setReadOnly(True)
         self.artist.setAlignment(Qt.AlignCenter)
         artistFont = self.artist.font()
-        artistFont.setPointSize(14)
+        artistFont.setPointSize(13)
         self.artist.setFont(artistFont)
 
         # Input widget for playing video url

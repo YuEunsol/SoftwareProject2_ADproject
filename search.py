@@ -10,11 +10,16 @@ class Search:
     def searchSong(self):
         if '·' in self.detail:
             return self.detail.split('·')[0]
+        elif "-" in self.title:
+            return self.title.split("-")[1]
         else:
             return self.title
 
     def searchArtist(self):
-        return self.detail.split('·')[1]
+        try:
+            return self.detail.split('·')[1]
+        except:
+            return self.detail
 
     def searchLyrics(self):
         comment = []
@@ -24,11 +29,8 @@ class Search:
                 each = each.replace("\r", "")
                 each = each.replace("\n", "")
                 each = each.replace("\">", "")
-                if "yt-formatted-string" in each:
-                    each = ""
-                    comment.append(each)
-                else:
-                    comment.append(each)
+                each = each.replace(', <yt-formatted-string class="style-scope ytd-comment-renderer" id="content-text" slot="content" split-lines="',"")
+                comment.append(each)
         return comment
 
     def displayLyrics(self):
@@ -39,6 +41,7 @@ class Search:
                 lyrics += "\n\n"
             else:
                 lyrics += str(each)
+
         return lyrics
 
 
