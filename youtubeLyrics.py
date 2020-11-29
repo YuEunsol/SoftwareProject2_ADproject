@@ -20,10 +20,6 @@ class YoutubeLyrics(QWidget):
         lyricsFont.setPointSize(13)
         self.lyrics.setFont(lyricsFont)
 
-        # Scroll Area for Lyrics
-        scroll = QScrollArea()
-        scroll.setWidget(self.lyrics)
-
         # Song title display widget
         self.songTitle = QTextEdit()
         self.songTitle.setReadOnly(True)
@@ -33,7 +29,6 @@ class YoutubeLyrics(QWidget):
         titleFont.setBold(True)
         self.songTitle.setFont(titleFont)
         self.songTitle.setMaximumSize(580,80)
-
 
         # Artist display widget
         self.artist = QLineEdit()
@@ -64,7 +59,7 @@ class YoutubeLyrics(QWidget):
         mainLayout.addWidget(self.submitButton, 0, 2, 1, 1)
         mainLayout.addWidget(self.songTitle, 1, 0, 2, 3)
         mainLayout.addWidget(self.artist, 3, 0, 1, 3)
-        mainLayout.addWidget(scroll, 4, 0, 1, 3)
+        mainLayout.addWidget(self.lyrics, 4, 0, 1, 3)
         mainLayout.addWidget(self.resetButton, 5, 2, 1, 1)
 
         self.setWindowTitle('Youtube Lyrics Search Program')
