@@ -2,7 +2,8 @@ from crawl import Crawl
 
 class Scrap:
     def __init__(self,url):
-        self.soup = Crawl(url)
+        self.crawl = Crawl(url)
+        self.soup = self.crawl.crawlPage()
 
 
     def scrapTitleInfo(self):

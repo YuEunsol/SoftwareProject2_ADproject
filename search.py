@@ -2,10 +2,10 @@ from scrap import Scrap
 
 class Search:
     def __init__(self, url):
-        Scrap(url)
-        self.title = Scrap.scrapTitleInfo()
-        self.detail = Scrap.scrapDetailInfo()
-        self.comment = Scrap.scrapCommentInfo()
+        self.scrap = Scrap(url)
+        self.title = self.scrap.scrapTitleInfo()
+        self.detail = self.scrap.scrapDetailInfo()
+        self.comment = self.scrap.scrapCommentInfo()
 
     def searchSong(self):
         if '·' in self.detail:
@@ -23,20 +23,22 @@ class Search:
                 each = each.replace("<span class=\"style-scope yt-formatted-string\" dir=\"auto\">", "")
                 each = each.replace("\r", "")
                 each = each.replace("\n", "")
-                each = each.replace("\xa0", "")
-                if "<" in each:
+                each = each.replace("\">", "")
+                if "yt-formatted-string" in each:
                     each = ""
+                    comment.append(each)
+                else:
                     comment.append(each)
         return comment
 
     def displayLyrics(self):
-        comment = Search.searchLyrics()
+        comment = self.searchLyrics()
         lyrics = ""
         for each in comment:
             if each == "":
-                lyrics += "\n"
+                lyrics += "\n\n"
             else:
-                lyrics += each
+                lyrics += str(each)
         return lyrics
 
 

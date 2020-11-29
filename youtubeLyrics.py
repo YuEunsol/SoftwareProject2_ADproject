@@ -15,6 +15,10 @@ class YoutubeLyrics(QWidget):
         self.lyrics = QTextEdit()
         self.lyrics.setReadOnly(True)
         self.lyrics.setAlignment(Qt.AlignCenter)
+        self.lyrics.resize(370,520)
+        lyricsFont = self.lyrics.font()
+        lyricsFont.setPointSize(11)
+        self.lyrics.setFont(lyricsFont)
 
         # Scroll Area for Lyrics
         scroll = QScrollArea()
@@ -43,7 +47,7 @@ class YoutubeLyrics(QWidget):
         # Button for submitting a url
         self.submitButton = QToolButton()
         self.submitButton.setText('Submit')
-        self.submitButton.clicked.connect(self.searchLyrics())
+        self.submitButton.clicked.connect(self.searchLyrics)
 
         # Button for previous Lyrics
         self.preButton = QToolButton()
@@ -75,17 +79,18 @@ class YoutubeLyrics(QWidget):
         self.setWindowTitle('Youtube Lyrics Search Program')
 
         self.setLayout(mainLayout)
+        self.setGeometry(700, 240, 500, 700)
 
         self.show()
 
 
     def searchLyrics(self):
-        self.url = self.urlInput.text().strip()
-        Search(self.url)
+        url = self.urlInput.text().strip()
+        self.search = Search(url)
         self.urlInput.clear()
-        self.songTitle.setText(Search.searchSong())
-        self.atrist.setText(Search.searchArtist())
-        self.lyrics.setText(Search.displayLyrics())
+        self.songTitle.setText(self.search.searchSong())
+        self.artist.setText(self.search.searchArtist())
+        self.lyrics.setText(self.search.displayLyrics())
 
 
 

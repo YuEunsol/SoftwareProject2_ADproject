@@ -17,8 +17,8 @@ class Crawl:
             lastPageHeight = newPageHeight
 
         try:
-            return BeautifulSoup(self.driver.page_source, "html.parser")
+            result = BeautifulSoup(self.driver.page_source, "html.parser")
         except:
             print("e")
-
         self.driver.close()
+        return result
