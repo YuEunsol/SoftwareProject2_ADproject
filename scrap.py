@@ -30,6 +30,6 @@ class Scrap:
             lines = each.split("</span>")
             if len(lines) > 15:
                 return lines
-        return commentInfo
+        return "댓글 중 가사 댓글이 없습니다"
 
 

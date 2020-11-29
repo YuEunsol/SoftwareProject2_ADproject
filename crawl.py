@@ -10,7 +10,7 @@ class Crawl:
         
     def crawlPage(self):
         lastPageHeight = self.driver.execute_script("return document.documentElement.scrollHeight")
-        for i in range(25):
+        for i in range(15):
             self.driver.execute_script("window.scrollTo(0, document.documentElement.scrollHeight);")
             time.sleep(0.3)
             newPageHeight = self.driver.execute_script("return document.documentElement.scrollHeight")

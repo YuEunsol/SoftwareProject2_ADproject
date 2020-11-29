@@ -19,17 +19,23 @@ class Search:
         try:
             return self.detail.split('·')[1]
         except:
-            return self.detail
+            return "unknown"
 
     def searchLyrics(self):
         comment = []
+        if self.comment == "댓글 중 가사 댓글이 없습니다":
+            return self.comment
+
         for each in self.comment:
             if "dir=\"auto\">" in each:
                 each = each.replace("<span class=\"style-scope yt-formatted-string\" dir=\"auto\">", "")
                 each = each.replace("\r", "")
                 each = each.replace("\n", "")
                 each = each.replace("\">", "")
-                each = each.replace(', <yt-formatted-string class="style-scope ytd-comment-renderer" id="content-text" slot="content" split-lines="',"")
+                each = each.replace("<a class=", "")
+                each = each.replace('"', "")
+                each = each.replace("[<yt-formatted-string class=style-scope ytd-comment-renderer id=content-text slot=content split-lines=", "")
+                each = each.replace(", <yt-formatted-string class=style-scope ytd-comment-renderer id=content-text slot=content split-lines=>", "")
                 comment.append(each)
         return comment
 
