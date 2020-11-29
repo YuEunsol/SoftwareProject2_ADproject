@@ -15,9 +15,9 @@ class YoutubeLyrics(QWidget):
         self.lyrics = QTextEdit()
         self.lyrics.setReadOnly(True)
         self.lyrics.setAlignment(Qt.AlignCenter)
-        self.lyrics.resize(408,528)
+        self.lyrics.resize(570,720)
         lyricsFont = self.lyrics.font()
-        lyricsFont.setPointSize(11)
+        lyricsFont.setPointSize(13)
         self.lyrics.setFont(lyricsFont)
 
         # Scroll Area for Lyrics
@@ -25,20 +25,22 @@ class YoutubeLyrics(QWidget):
         scroll.setWidget(self.lyrics)
 
         # Song title display widget
-        self.songTitle = QLineEdit()
+        self.songTitle = QTextEdit()
         self.songTitle.setReadOnly(True)
         self.songTitle.setAlignment(Qt.AlignCenter)
         titleFont = self.songTitle.font()
         titleFont.setPointSize(16)
         titleFont.setBold(True)
         self.songTitle.setFont(titleFont)
+        self.songTitle.setMaximumSize(580,80)
+
 
         # Artist display widget
         self.artist = QLineEdit()
         self.artist.setReadOnly(True)
         self.artist.setAlignment(Qt.AlignCenter)
         artistFont = self.artist.font()
-        artistFont.setPointSize(13)
+        artistFont.setPointSize(14)
         self.artist.setFont(artistFont)
 
         # Input widget for playing video url
@@ -48,16 +50,6 @@ class YoutubeLyrics(QWidget):
         self.submitButton = QToolButton()
         self.submitButton.setText('Submit')
         self.submitButton.clicked.connect(self.submitUrl)
-
-        # # Button for previous Lyrics
-        # self.preButton = QToolButton()
-        # self.preButton.setText('<')
-        # self.preButton.clicked.connect(self.preLyrics)
-        #
-        # # Button for next Lyrics
-        # self.nextButton = QToolButton()
-        # self.nextButton.setText('>')
-        # self.nextButton.clicked.connect(self.nextLyrics)
 
         # Button for reset
         self.resetButton = QToolButton()
@@ -70,20 +62,26 @@ class YoutubeLyrics(QWidget):
 
         mainLayout.addWidget(self.urlInput, 0, 0, 1, 2)
         mainLayout.addWidget(self.submitButton, 0, 2, 1, 1)
-        mainLayout.addWidget(self.songTitle, 1, 1, 1, 1)
-        mainLayout.addWidget(self.artist, 2, 1, 1, 1)
-        mainLayout.addWidget(scroll, 3, 1, 1, 1)
-        mainLayout.addWidget(self.resetButton, 4, 1, 1, 1)
+        mainLayout.addWidget(self.songTitle, 1, 0, 2, 3)
+        mainLayout.addWidget(self.artist, 3, 0, 1, 3)
+        mainLayout.addWidget(scroll, 4, 0, 1, 3)
+        mainLayout.addWidget(self.resetButton, 5, 2, 1, 1)
 
         self.setWindowTitle('Youtube Lyrics Search Program')
         self.setLayout(mainLayout)
-        self.setGeometry(1200, 240, 500, 700)
+        self.setGeometry(1200, 140, 600, 900)
 
 
     def searchLyrics(self, url):
         self.search = Search(url)
         self.urlInput.clear()
-        self.songTitle.setText(self.search.searchSong())
+        songTitle = self.search.searchSong()
+        if len(songTitle) > 20:
+            if "(" in songTitle:
+                songTitle = songTitle.replace("(","\n(")
+            else:
+                songTitle = songTitle.replace(songTitle[20],songTitle[20]+"\n")
+        self.songTitle.setText(songTitle)
         self.artist.setText(self.search.searchArtist())
         self.lyrics.setText(self.search.displayLyrics())
 

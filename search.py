@@ -9,16 +9,22 @@ class Search:
 
     def searchSong(self):
         if '·' in self.detail:
-            return self.detail.split('·')[0]
+            return self.detail.split('·')[0].split("\n")[2]
         elif "-" in self.title:
             return self.title.split("-")[1]
+        elif "-" in self.detail:
+            return self.detail.split("-")[1].split("\n")[0]
         else:
             return self.title
 
     def searchArtist(self):
-        try:
-            return self.detail.split('·')[1]
-        except:
+        if '·' in self.detail:
+            return self.detail.split('·')[1].split("\n")[0]
+        elif "-" in self.title:
+            return self.title.split("-")[0]
+        elif "-" in self.detail:
+            return self.detail.split("-")[0].split("\n")[2]
+        else:
             return "unknown"
 
     def searchLyrics(self):
@@ -36,6 +42,7 @@ class Search:
                 each = each.replace('"', "")
                 each = each.replace("[<yt-formatted-string class=style-scope ytd-comment-renderer id=content-text slot=content split-lines=", "")
                 each = each.replace(", <yt-formatted-string class=style-scope ytd-comment-renderer id=content-text slot=content split-lines=>", "")
+                each = each.replace(", <yt-formatted-string class=style-scope ytd-comment-renderer id=content-text slot=content split-lines=","")
                 comment.append(each)
         return comment
 

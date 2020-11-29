@@ -6,17 +6,16 @@ class Scrap:
         self.soup = self.crawl.crawlPage()
 
     def scrapTitleInfo(self):
-        try:
-            return self.soup.select_one("#title").text
-        except:
-            return self.soup.select_one("#container > h1 > yt-formatted-string").text
+        titleInfo = self.soup.select_one("#title").text
+        if titleInfo == "":
+            titleInfo = self.soup.select_one("#container > h1 > yt-formatted-string").text
+        return titleInfo
 
 
     def scrapDetailInfo(self):
         try:
             detailInfo = self.soup.select_one("#description")
             detailInfo = str(detailInfo.text)
-            detailInfo = detailInfo.split('\n')[2]
         except:
             detailInfo = self.soup.select_one("#container > ytd-expander > ytd-metadata-row-container-renderer")
             detailInfo = str(detailInfo.text)
