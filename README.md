@@ -4,7 +4,19 @@ AD프로젝트 : 유튜브 가사 댓글 찾기 프로그램
 <br><br>
 
 ## 개요
-> 유튜브 프리미엄을 쓰는 나는 유튜브로 노래를 자주 듣곤한다. 유튜브 알고리즘이 내가 알지 못했던 좋은 노래로 이끌어주는 경험이 있었기 때문이다. 그런데 유튜브에서의 단점이 하나 있다면 가사를 일일이 댓글에서 찾아야 한다는 것이다. 원래 우리가 쓰던 노래 재생 프로그램(멜론, 벅스, 지니 등..)에선 노래마다 가사가 자동으로 로드되어 굳이 찾을 필요가 없었다. 노래를 듣는 것 만큼이나 노래를 부르는 것을 좋아하는 나는 가사 여부 때문에 최근에 벅스를 다시 구독했다. 하지만 유튜브에만 있는 노래도 많기 때문에 유튜브를 포기할 수는 없었다. 그래서 직접 <유튜브 댓글에서 가사를 찾아주는 프로그램>을 만들어보고자 한다.
+유튜브 프리미엄을 쓰는 나는 유튜브로 노래를 자주 듣곤한다.  
+   
+유튜브 알고리즘이 내가 알지 못했던 좋은 노래로 이끌어주는 경험이 있었기 때문이다.    
+   
+그런데 유튜브에서의 단점이 하나 있다면 가사를 일일이 댓글에서 찾아야 한다는 것이다.   
+  
+원래 우리가 쓰던 노래 재생 프로그램(멜론, 벅스, 지니 등..)에선 노래마다 가사가 자동으로 로드되어 굳이 찾을 필요가 없었다.   
+  
+노래를 듣는 것 만큼이나 노래를 부르는 것을 좋아하는 나는 가사 여부 때문에 최근에 벅스를 다시 구독했다.   
+  
+하지만 유튜브에만 있는 노래도 많기 때문에 유튜브를 포기할 수는 없었다.   
+    
+그래서 직접 [유튜브 댓글에서 가사를 찾아주는 프로그램]을 만들어보고자 한다.   
 
 <br><br><br><br><br><br>
 <br><br><br><br><br><br>
@@ -66,13 +78,13 @@ AD프로젝트 : 유튜브 가사 댓글 찾기 프로그램
 
 | ↓ | 내용 |
 |:---|---:|
-| **youtubeLyrics** | user에게 `url`을 입력받음 <br> `url`을 `search`에게 인자로 줌 |
-| **search** |  `url`을 `scrap`에게 인자로 줌 |
-| **scrap** |  `url`을 `crawl`에게 인자로 줌 |
-| **crawl** | 인자로 받은 `url`에서 `html` 정보를 긁어와 `html` 태그 형식으로 도출 |
-| **scrap** | 받아온 `html` 정보 중 영상 제목에 해당하는 데이터를 추출하여 `String` 형태로 도출 <br> 받아온 `html` 정보 중 상세 정보에 해당하는 데이터를 추출하여 `String` 형태로 도출 <br> 받아온 `html` 정보 중 댓글에 해당하는 데이터를 추출 <br> 추출한 댓글 중 15줄 이상에 해당하는 것만 `String` 형태로 도출 |
-| **search** | 받아온 영상 제목, 상세 정보에서 찾아낸 노래 제목을 도출 <br> 받아온 영상 제목, 상세 정보에서 찾아낸 아티스트를 도출 <br> 받아온 댓글에서 `html`태그를 제거하여 가사를 도출  |
-| **youtubeLyrics** | 받아온 노래 제목, 아티스트, 가사를 창에 띄움 |
+| **youtubeLyrics** | <br>  user에게 `url`을 입력받음 <br> `url`을 `search`에게 인자로 줌  <br>  |
+| **search** |  <br>  `url`을 `scrap`에게 인자로 줌  <br>  |
+| **scrap** | <br>  `url`을 `crawl`에게 인자로 줌 |
+| **crawl** |  <br>  인자로 받은 `url`에서 `html` 정보를 긁어와 `html` 태그 형식으로 도출 |
+| **scrap** |  <br>  받아온 `html` 정보 중 영상 제목에 해당하는 데이터를 추출하여 `String` 형태로 도출 <br> 받아온 `html` 정보 중 상세 정보에 해당하는 데이터를 추출하여 `String` 형태로 도출 <br> 받아온 `html` 정보 중 댓글에 해당하는 데이터를 추출 <br> 추출한 댓글 중 15줄 이상에 해당하는 것만 `String` 형태로 도출 |
+| **search** |  <br>  받아온 영상 제목, 상세 정보에서 찾아낸 노래 제목을 도출 <br> 받아온 영상 제목, 상세 정보에서 찾아낸 아티스트를 도출 <br> 받아온 댓글에서 `html`태그를 제거하여 가사를 도출  |
+| **youtubeLyrics** |  <br>  받아온 노래 제목, 아티스트, 가사를 창에 띄움 |
 
 <br><br><br><br><br><br>
 <br><br><br><br><br><br>
@@ -129,7 +141,7 @@ url
 <br>
 
 **2. scrapTitleInfo**  
-<br>  
+
 titleInfo  
   - `#title` 또는 `#container > h1 > yt-formatted-string` 라는 태그가 붙은 `html` 데이터를 도출  
   - (`#title` > `#container > h1 > yt-formatted-string` 순)  
@@ -140,7 +152,7 @@ titleInfo
 <br>
 
 **3. scrapDetailInfo**  
-<br>  
+
 detailInfo  
   - `#description`라는 태그가 붙은 `html` 데이터를 도출  
   - (`.text`를 이용해 필요없는 태그를 제거함)  
@@ -150,7 +162,7 @@ detailInfo
 <br>
 
 **4. scrapCommentInfo**
-<br>  
+
 commentInfo  
   - `yt-formatted-string#content-text`라는 태그가 붙은 `html` 데이터를 추출   
   - (값이 여러 개가 나오기 때문에 `select`를 사용-`List`타입으로 도출)  
@@ -166,7 +178,7 @@ commentInfo
 <br>
 
 **1. 자료 구조**  
-<br>  
+
 title
   - `Scrap`에서 받아온 영상 제목에 대한 정보(String)
     
@@ -178,78 +190,101 @@ comment
     
 url  
   - 현재 url 주소(String)  
+  
       <br>  
+      
 **2. searchSong**  
-<br>  
+
   - `detail`에 `"·"`가 있으면 `"\n"`과 `"·"`  사이 text 도출  
   - `title`에 `"-"`가 있으면 `"-"` 다음 text 도출  
   - `detail`에 `"-"`가 있으면 `"-"`과 `"\n"` 사이 text 도출  
   - 위 사항에 해당되지 않으면 `title` 도출  
   - 에러 발생시 `"제목을 찾을 수 없습니다"` 도출  
+  
       <br>  
+      
 **3. searchArtist**  
-<br>
+
   - `detail`에 `"·"`가 있으면 `"·"`과 `"\n"` 사이 text 도출  
   - `title`에 `"-"`가 있으면 `"-"` 이전 text 도출  
   - `detail`에 `"-"`가 있으면 `"\n"`과 `"-"` 사이 text 도출  
   - 에러 발생시 `"아티스트를 찾을 수 없습니다"` 도출  
+  
 <br>  
+
 **4. searchLyrics**  
-<br>
+
+
   - `comment`가 `"댓글 중 가사 댓글이 없습니다"`면 그대로 도출   
   - `comment` 중 `"dir=\"auto\">"`가 있는 댓글만 추출하여 `html`태그를 제거하여 `List`타입으로 도출    
   - 에러 발생시 `"가사를 찾을 수 없습니다"` 도출  
+  
 <br>  
+
 **5. displayLyrics**  
-<br>  
+
   - `searchLyrics`에서 받아온 가사를 줄바꿈을 넣어 `String`타입으로 도출  
+  
       <br><br><br>
-## YoutubeLyrics
+      
+## YoutubeLyrics  
+
 <br>
 
 **1. MainLayout**  
-<br>  
-self.lyrics
+ 
+self.lyrics  
   - `QTextEdit` 위젯이며 읽기만 가능  
   - 폰트 사이즈는 13으로 설정  
      
-self.songTitle
+self.songTitle  
   - `QTextEdit` 위젯이며 읽기만 가능  
   - 폰트 사이즈는 16으로 설정  
   - 볼드체로 설정  
      
-self.artist
+self.artist  
   - `QLineEdit` 위젯이며 읽기만 가능  
   - 폰트 사이즈는 14으로 설정  
      
-self.urlInput
+self.urlInput  
   - `QLineEdit` 위젯  
      
-self.submitButton
+self.submitButton  
   - `QToolButton` 위젯  
   - `self.submitUrl`과 연결되어 있음  
     
-self.resetButton
-  - `QToolButton` 위젯  
+self.resetButton  
+  - `QToolButton` 위젯   
   - `self.reset`과 연결되어 있음  
+  
         <br><br>  
+        
 **2. searchLyrics**  
+
 <br>  
+
   - 받아온 `url` 값을 인자로 `Search`모듈을 실행하고 `urlInput`에 입력값을 지움  
   - 노래 제목 뒤에 (Feat. ...)이 붙었을 경우 길어지기 때문에 `"("`앞에서 줄바꿈을 할 수 있도록 함  
   - 혹은 (Feat. ...)이 붙지 않더라도 길어지는 경우를 대비해 20번째 글자에서 줄바꿈을 할 수 있도록 함  
   - `self.songTitle`을 `self.search.searchSong()`에서 받아온 노래 제목 값으로 설정  
   - `self.artist`을 `self.search.searchArtist()`에서 받아온 아티스트 값으로 설정  
   - `self.lyrics`을 `self.search.displayLyrics()`에서 받아온 가사 값으로 설정  
-        <br><br>  
+  
+        <br><br>   
+        
 **3. submitUrl**  
+
  <br>  
+ 
   - `submit` 버튼 클릭 시 `url` 값을 사용자가 입력한 값으로 설정함   
   - 사용자가 입력한 값이 유튜브 링크가 맞는지 확인하고 아닐시 입력값 삭제    
+  
      <br><br>  
         
 **4. reset**  
+
 <br>  
+
   - `self.lyrics`, `self.songTitle`, `self.artist` 삭제  
      
       
