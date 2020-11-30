@@ -257,7 +257,7 @@ self.resetButton
   - `QToolButton` 위젯   
   - `self.reset`과 연결되어 있음  
   
-        <br><br>  
+ <br><br>  
         
 **2. searchLyrics**  
 
@@ -270,7 +270,7 @@ self.resetButton
   - `self.artist`을 `self.search.searchArtist()`에서 받아온 아티스트 값으로 설정  
   - `self.lyrics`을 `self.search.displayLyrics()`에서 받아온 가사 값으로 설정  
   
-        <br><br>   
+<br><br>   
         
 **3. submitUrl**  
 
@@ -278,8 +278,8 @@ self.resetButton
  
   - `submit` 버튼 클릭 시 `url` 값을 사용자가 입력한 값으로 설정함   
   - 사용자가 입력한 값이 유튜브 링크가 맞는지 확인하고 아닐시 입력값 삭제    
-  
-     <br><br>  
+
+<br><br>  
         
 **4. reset**  
 
