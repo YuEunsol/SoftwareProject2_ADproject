@@ -298,16 +298,42 @@ self.resetButton
 <br>
 
 
-+ 구현하고 싶은 것
- - 글자 크기 조절
- - 윈도우 투명도 조절
- - 윈도우 항상 맨 위에 위치
- - 자동으로 url 받아오기
- - 네이버 검색 후 정보 받아오기
-
++ 구현하고 싶은 것    
+ - 글자 크기 조절  
+ - 윈도우 투명도 조절  
+ - 윈도우 항상 맨 위에 위치  
+     
+     
++ 구현하려 했으나 못한 것, 삭제한 것    
+ - 자동으로 url 받아오기  
+    - 해당 페이지와 연결하는 것이 아니라 크롬 프로그램과 연결해야 하는 것으로 보임    
+      실시간으로 url을 받아올 수 있는 모듈을 찾아야 함   
+ - 가사 댓글을 여러 개 받아오기  
+    - 댓글 html 태그가 다 비슷해서 가사 댓글을 찾기 어려울 줄 알았는데 여러 번 시도 했더니 결국 찾아서 삭제함  
+      간혹가다 외국어 버전 가사 댓글도 있기 때문에 다시 추가할 예정  
+ - 유튜브 노래 태그 이용해서 데이터 받아오기
+    - 유튜브 자체에 노래 정보 태그를 이용해 데이터를 추출하려 했으나 노래태그가 링크 형식으로 되어있어서 text형식으로 추출되지 않음  
+      이것을 이용하면 공식 음원이 아니더라도 정확한 정보 추출이 가능하기 때문에 추가할 예정
+ - 네이버 검색 후 정보 받아오기  
+    - url 자체가 다르기 때문에 웹스크랩을 한 번 거친 뒤 정보를 걸러낸 후 다시 다른 웹스크랩을 해야함(매우매우매우복잡)
+      이것을 이용하면 노래 플레이리스트에서도 가사 지원이 가능하기 때문에 추가를 희망함
+    
+    
 <br><br><br>
 ----------------------------------------
 <br><br><br>
 
-## 참고문헌
-<br>
+## 참고  
+
+<br> 
+https://itholic.github.io/linux-path/
+https://hyomyo.tistory.com/51
+https://yuda.dev/260
+https://shinminyong.tistory.com/10
+https://m.blog.naver.com/kiddwannabe/221177292446
+https://hogni.tistory.com/21
+https://beomi.github.io/gb-crawling/posts/2017-01-20-HowToMakeWebCrawler.html
+https://tariat.tistory.com/757
+https://madplay.github.io/post/python-urllib
+https://webisfree.com/2017-11-18/python%EC%97%90%EC%84%9C-%EC%99%B8%EB%B6%80-url%EC%9D%84-%ED%98%B8%EC%B6%9C%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95%EC%9D%80
+
